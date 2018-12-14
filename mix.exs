@@ -7,6 +7,7 @@ defmodule Takso.Mixfile do
       version: "0.0.1",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
+      preferred_cli_env: ["white_bread.run": :test],
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
       aliases: aliases(),
@@ -41,7 +42,9 @@ defmodule Takso.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:plug_cowboy, "~> 1.0"}
+      {:plug_cowboy, "~> 1.0"},
+      {:white_bread, "~> 4.3", only: [:test]}, 
+      {:hound, "~> 1.0"}
     ]
   end
 
