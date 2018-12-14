@@ -1,6 +1,6 @@
 defmodule WhiteBreadContext do
   use WhiteBread.Context
-
+  alias Takso.{Repo,Taxi}
 
   use Hound.Helpers
   
@@ -10,15 +10,21 @@ defmodule WhiteBreadContext do
   end
   scenario_starting_state fn _state ->
     Hound.start_session
+    Ecto.Adapters.SQL.Sandbox.checkout(Tasko.Repo)
+    Ecto.Adapters.SQL.Sandbox.mode(Tasko.Repo, {:shared, self()})
     %{}
   end
   scenario_finalize fn _status, _state -> 
+    Ecto.Adapters.SQL.Sandbox.checkin(Tasko.Repo)
     # Hound.end_session
     nil
   end
 
 
-  given_ ~r/^the following taxis are on duty$/, fn state ->
+  given_ ~r/^the following taxis are on duty$/, fn state, %{table_date: table} ->
+    table
+    |> Enum.map(fn taxi_data -> Taxi.changeset(%Taxi{}, taxi_data) end)
+    |> Enum.each(fn changeset -> Repo.insert!(changeset) end)
     {:ok, state}
   end
 
