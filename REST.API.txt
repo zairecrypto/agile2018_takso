@@ -1,0 +1,15 @@
+mix phx.routes
+
+page_path  GET     /                TaksoWeb.PageController :index
+user_path  GET     /users           TaksoWeb.UserController :index
+user_path  GET     /users/:id/edit  TaksoWeb.UserController :edit
+user_path  GET     /users/new       TaksoWeb.UserController :new
+user_path  GET     /users/:id       TaksoWeb.UserController :show
+
+user_path  POST    /users           TaksoWeb.UserController :create
+user_path  PATCH   /users/:id       TaksoWeb.UserController :update
+           PUT     /users/:id       TaksoWeb.UserController :update
+user_path  DELETE  /users/:id       TaksoWeb.UserController :delete
+
+
+<span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>

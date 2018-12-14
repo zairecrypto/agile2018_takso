@@ -3,18 +3,31 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
       <th>Username</th>
+      <th>Name</th>
       <th>Password</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
 <%= for user <- @users do %>
     <tr>
+      <td><%= link user.username, to: user_path(@conn, :edit, user) %></td>
       <td><%= user.name %></td>
-      <td><%= user.username %></td>
       <td><%= user.password %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
     </tr>
 <% end %>
   </tbody>
 </table>
+
+<div class="fixed-action-btn">
+    <%= link to: user_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
+        <i class="material-icons">add</i>
+    <% end %>
+</div>
