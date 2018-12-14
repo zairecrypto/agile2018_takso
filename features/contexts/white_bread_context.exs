@@ -47,4 +47,9 @@ defmodule WhiteBreadContext do
     assert visible_in_page? ~r/Your taxi will arrive in \d+ minutes/
     {:ok, state}
   end
+
+  then_ ~r/^I should receive a rejection message$/, fn state ->
+    assert visible_in_page? ~r/Sorry, No taxi available/
+    {:ok, state}
+  end
 end
