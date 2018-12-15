@@ -6,8 +6,9 @@ defmodule Takso.Authentication do
   end
 
   def call(conn, repo) do
-    IO.puts "HI THERE ..."
+    # IO.puts "HI THERE ..."
     # user = repo.get(Takso.User, 1)
-    assign(conn, :current_user, 1)
+    # assign(conn, :current_user, 1)
+    conn
   end
 end
