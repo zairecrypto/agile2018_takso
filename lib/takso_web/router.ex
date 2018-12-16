@@ -18,6 +18,7 @@ defmodule TaksoWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/bookings/summary", BookingController, :summary
     resources "/users", UserController
     resources "/bookings", BookingController
   end

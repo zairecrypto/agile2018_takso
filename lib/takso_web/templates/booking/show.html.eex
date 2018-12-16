@@ -1,0 +1,33 @@
+<div class="container">
+    <h4>User Logs</h4>
+    <p>Please select the user you want to see the booking logs</p>
+    <em style="color:grey; padding-left:100px">Click on the username to view logs</em>
+    <ul class="collection" style="width:70%; margin:auto">
+        <%= for user <- @users do %>
+        <li class="collection-item">
+        
+            <b>Created : </b> <%= user.inserted_at %>
+            <b>| User name: </b> <em style="padding-left:10px" ><%= link user.username, to: booking_path(@conn, :show, user) %></em>
+        </li>
+        <% end %>
+    </ul>
+</div>
+
+<div class="container">
+    <h4>Taxi Logs</h4>
+    <p>Summary of the number of booking requests accepted by each taxis<br/>
+     <em style="color:grey; padding-left:100px">Click on the taxi to view logs</em>
+    </p>
+    <ul class="collection" style="width:70%; margin:auto">
+        <li class="collection-item">
+            <%= link "+ Summary of Accepted Booking Requests per Taxis", to: booking_path(@conn, :summary) %>
+        </li>
+        <%= for taxis <- @taxis do %>
+        <li class="collection-item">
+        
+            <b>Created : </b> <%= taxis.inserted_at %>
+            <b>| User name: </b> <em style="padding-left:10px" ><%= taxis.username %></em>
+        </li>
+        <% end %>
+    </ul>
+</div>

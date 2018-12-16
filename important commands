@@ -2,3 +2,6 @@ git reset --hard && git clean -fd
 
 Add new fields to a table
 - mix ecto.gen.migration add_user_and_status_to_booking
+
+Execure a test function
+- elixirc test/function_expression_drafts/

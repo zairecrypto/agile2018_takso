@@ -12,7 +12,7 @@ defmodule Takso.Taxi do
   end
 
   @doc false
-  def changeset(taxi, attrs) do
+  def changeset(taxi, attrs \\ %{}) do
     taxi
     |> cast(attrs, [:username, :location, :status])
     |> validate_required([:username, :location, :status])

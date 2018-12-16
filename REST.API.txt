@@ -1,15 +1,38 @@
-mix phx.routes
+teddy@teddy-HP-EliteBook-840-G5:~/MTAT.03.295/Group-project/sprint4/takso$ mix phx.routes
+Compiling 1 file (.ex)
+   page_path  GET     /                   TaksoWeb.PageController :index
+   user_path  GET     /users              TaksoWeb.UserController :index
+   user_path  GET     /users/:id/edit     TaksoWeb.UserController :edit
+   user_path  GET     /users/new          TaksoWeb.UserController :new
+   user_path  GET     /users/:id          TaksoWeb.UserController :show
+   user_path  POST    /users              TaksoWeb.UserController :create
+   user_path  PATCH   /users/:id          TaksoWeb.UserController :update
+              PUT     /users/:id          TaksoWeb.UserController :update
+   user_path  DELETE  /users/:id          TaksoWeb.UserController :delete
+booking_path  GET     /bookings           TaksoWeb.BookingController :index
+booking_path  GET     /bookings/:id/edit  TaksoWeb.BookingController :edit
+booking_path  GET     /bookings/new       TaksoWeb.BookingController :new
+booking_path  GET     /bookings/:id       TaksoWeb.BookingController :show
+booking_path  POST    /bookings           TaksoWeb.BookingController :create
+booking_path  PATCH   /bookings/:id       TaksoWeb.BookingController :update
+              PUT     /bookings/:id       TaksoWeb.BookingController :update
+booking_path  DELETE  /bookings/:id       TaksoWeb.BookingController :delete
 
-page_path  GET     /                TaksoWeb.PageController :index
-user_path  GET     /users           TaksoWeb.UserController :index
-user_path  GET     /users/:id/edit  TaksoWeb.UserController :edit
-user_path  GET     /users/new       TaksoWeb.UserController :new
-user_path  GET     /users/:id       TaksoWeb.UserController :show
 
-user_path  POST    /users           TaksoWeb.UserController :create
-user_path  PATCH   /users/:id       TaksoWeb.UserController :update
-           PUT     /users/:id       TaksoWeb.UserController :update
-user_path  DELETE  /users/:id       TaksoWeb.UserController :delete
+Taxi Status: 
+    available, 
+    busy, 
+    invisible 
+    off-duty. 
 
+Booking status: 
+    open (while trying to find a taxi), 
+    accepted (when a taxi driver accepts it), 
+    rejected (when there is not taxi to serve the request) 
+    cancelled (when the customer cancels the request). 
 
-<span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+Taxi allocation Status  
+    preallocated (a taxi driver has been selected), 
+    accepted, 
+    rejected 
+    cancelled.
