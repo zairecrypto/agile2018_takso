@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="//maps.googleapis.com/maps/api/js?key=<%= Application.get_env(:takso, :gmaps_api_key) %>"></script>
+
   </head>
 
   <body>

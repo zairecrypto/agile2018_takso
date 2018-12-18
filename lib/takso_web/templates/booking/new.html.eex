@@ -13,3 +13,28 @@
     <%= submit "Submit", id: "submit_button", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+
+<div class="container" style="" >
+<div id="takso-app" >
+  <div class="form-group" >
+    <div class="col-sm-9" style="width:100%">
+      <input type="text" class="form-control" id="pickup_address" v-model="pickup_address" placeholder="Pickup Address">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-9" style="width:100%;">
+      <input type="text" class="form-control" id="dropoff_address" v-model="dropoff_address" placeholder="Dropoff Address" >
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-3 col-sm-9" >
+      <button class="btn" v-on:click="submitBookingRequest">order a Taxi ?</button>
+    </div>
+  </div>
+</div>
+</div>
+<div id="map" style="width:100%;height:300px; border:solid 2px red"></div>
+<input type="text" v-model="user_id" value= <%= @user %> style="visibility: hidden;">
+
+

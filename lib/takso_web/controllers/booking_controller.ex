@@ -2,7 +2,7 @@ defmodule TaksoWeb.BookingController do
   use TaksoWeb, :controller
   import Ecto.Query, only: [from: 2]
 
-  alias Takso.{Booking, Taxi, Repo, Accounts.User, Allocation, Geolocation}
+  alias Takso.{Booking, Taxi, Repo, Accounts.User, Sales.Allocation, Geolocation}
 
   def new(conn, %{"user_id" => user_id}) do 
     changeset = Booking.changeset(%Booking{}, %{})

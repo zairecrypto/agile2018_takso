@@ -1,4 +1,4 @@
-defmodule Takso.Allocation do
+defmodule Takso.Sales.Allocation do
     use Ecto.Schema
     import Ecto.Changeset
   
