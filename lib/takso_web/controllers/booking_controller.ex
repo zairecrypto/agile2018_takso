@@ -2,9 +2,9 @@ defmodule TaksoWeb.BookingController do
   use TaksoWeb, :controller
   import Ecto.Query, only: [from: 2]
 
-  alias Takso.{Booking, Taxi, Repo, Accounts.User, Allocation}
+  alias Takso.{Booking, Taxi, Repo, Accounts.User, Allocation, Geolocation}
 
-  def new(conn, %{"user_id" => user_id}) do
+  def new(conn, %{"user_id" => user_id}) do 
     changeset = Booking.changeset(%Booking{}, %{})
     render conn, "new.html", changeset: changeset, user: user_id
   end
@@ -82,6 +82,8 @@ defmodule TaksoWeb.BookingController do
           |> Ecto.Multi.update(:booking, Booking.changeset(booking) |> Ecto.Changeset.put_change(:status, "allocated"))
           |> Repo.transaction
     
+          
+
           conn
           |> put_flash(:info, "Your taxi will arrive in 5 minutes")
           |> redirect(to: booking_path(conn, :index))

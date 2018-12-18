@@ -4,8 +4,14 @@
     <%= for {taxi_name, number_of_bookings} <- @tuples do %>
          <li class="collection-item">
             <b style = "padding-right:10px">Taxi username : </b> <%= taxi_name %><br/>
-            <b style = "padding-right:10px">Driver Names : </b> <%=  %><br/>
-            <b style = "padding-right:10px">Car Numberplate : </b> NP <%= Enum.random(000..999) %> TZ<br/>
+            <b style = "padding-right:10px">Driver Names : </b> <%= 
+            ["Kuznetsov", "Popov", "Sokolov", "Mikhailov"]
+            |>Enum.at(Enum.random(0..2)) %><br/>
+            <b style = "padding-right:10px">Car Numberplate : </b> 
+            <%= 
+            ["NP", "UN", "TY", "HHBG"]
+            |>Enum.at(Enum.random(0..2)) %>
+            <%= Enum.random(000..999) %> EE<br/>
             <b style = "padding-right:10px">Car Brand/Model : </b> <%= 
             ["Audi SEDANS A3", "Audi COUPES R8", "Audi SUV's A3", "Toyota Prius", "Toyota RAV4"]
             |>Enum.at(Enum.random(0..4))

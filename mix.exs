@@ -21,7 +21,8 @@ defmodule Takso.Mixfile do
   def application do
     [
       mod: {Takso.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_machina]
+      
     ]
   end
 
@@ -44,7 +45,12 @@ defmodule Takso.Mixfile do
       {:cowboy, "~> 1.0"},
       {:plug_cowboy, "~> 1.0"},
       {:white_bread, "~> 4.3", only: [:test]}, 
-      {:hound, "~> 1.0"}
+      {:hound, "~> 1.0"}, 
+      {:mock, "~> 0.2.0", only: :test}, 
+      {:ex_machina, "~> 2.2"}, 
+      {:faker, "~> 0.9", only: :test}, 
+      {:httpoison, "~> 0.13"}, 
+      {:poison, "~> 3.1"}
     ]
   end
 
