@@ -21,6 +21,8 @@ defmodule TaksoWeb.Router do
     get "/bookings/summary", BookingController, :summary
     resources "/users", UserController
     resources "/bookings", BookingController
+    # resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/sessions", SessionController
   end
 
   # Other scopes may use custom stacks.

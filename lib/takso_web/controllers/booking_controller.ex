@@ -4,13 +4,14 @@ defmodule TaksoWeb.BookingController do
 
   alias Takso.{Booking, Taxi, Repo, Accounts.User, Sales.Allocation, Geolocation}
 
-  def new(conn, %{"user_id" => user_id}) do 
+  def new(conn, _) do 
     changeset = Booking.changeset(%Booking{}, %{})
-    render conn, "new.html", changeset: changeset, user: user_id
+    render conn, "new.html", changeset: changeset, user: Integer.to_string conn.assigns.current_user.id
   end
 
   # Show is used to see all booking related logs
-  def show(conn, %{"id" => user_id}) do
+  def show(conn, _) do
+    user_id = (Integer.to_string conn.assigns.current_user.id) && "1"
     case String.equivalent?(user_id,"show") do
       true -> 
         users = Repo.all(User)
@@ -44,8 +45,8 @@ defmodule TaksoWeb.BookingController do
     render conn, "summary.html", tuples: tuples
   end
 
-  def create(conn, %{"booking" => booking_params, "user_id" => user_id}) do
-
+  def create(conn, %{"booking" => booking_params}) do
+    user_id = Integer.to_string conn.assigns.current_user.id
     user = Repo.get!(User, user_id)
 
     %{"dropoff_address" => do_address, "pickup_address" => pu_address} = booking_params

@@ -23,12 +23,12 @@
           Welcom to Takso 
         </a>
         <ul class ="right">
-            <li>
-              <a href = "#">Sign Up</a>
-            </li>
-            <li>
-              <a href = "#">Signin</a>
-            </li>
+<%= if @conn.assigns.current_user do %>
+          <li>Hello <%= @conn.assigns.current_user.username %></li>
+          <li><%= link "Log out", to: session_path(@conn, :delete, @conn.assigns.current_user), method: "delete" %></li>
+<% else %>
+          <li><%= link "Log in", to: session_path(@conn, :new) %></li>
+<% end %>
         </ul>
       </div>
     </nav>
